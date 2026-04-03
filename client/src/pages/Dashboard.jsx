@@ -467,7 +467,7 @@ export default function Dashboard() {
   const runPipeline = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/run-pipeline");
+      const res = await axios.post("http://infraflow-backend.onrender.com:5000/api/run-pipeline");
       alert(res.data.message);
     } catch (err) {
       console.error(err);
