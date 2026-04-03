@@ -50,10 +50,10 @@ router.get('/github/callback', async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     // Send them back to the React app with the token!
-    res.redirect(`http://localhost:5173/auth/success?token=${token}`);
+    res.redirect(`http://infraflow-backend.onrender.com/auth/success?token=${token}`);
   } catch (error) {
     console.error('GitHub Auth Error:', error);
-    res.redirect('http://localhost:5173?error=auth_failed');
+    res.redirect('http://infraflow-backend.onrender.com/auth/failed');
   }
 });
 

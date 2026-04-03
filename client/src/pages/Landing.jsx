@@ -2,7 +2,7 @@ import { Github, Activity, CheckCircle, Clock, Terminal as TerminalIcon } from "
 
 function Landing() {
   const handleLogin = () => {
-    window.location.href = "http://localhost:5000/auth/github";
+    window.location.href = "https://infraflow-frontend.onrender.com/auth/github";
   };
 
   return (
