@@ -16,7 +16,7 @@ function NewPipeline() {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    await axios.post("http://localhost:5000/pipelines", form, {
+    await axios.post("http://infraflow-backend.onrender.com/pipelines", form, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

@@ -3,7 +3,7 @@ const axios = require("axios");
 const runPipeline = async (req, res) => {
   try {
     await axios.post(
-      "http://192.168.0.2:8080/job/Infraflow/build",
+      "http://192.168.0.2/job/Infraflow/build",
       {},
       {
         auth: {

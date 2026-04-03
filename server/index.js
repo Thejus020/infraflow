@@ -3,30 +3,37 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const pipelineRoutes = require('./routes/pipelineRoutes'); // ✅ ADD THIS
+const pipelineRoutes = require('./routes/pipelineRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ Middleware FIRST
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+// ✅ FIXED CORS (ALLOW FRONTEND + LOCALHOST)
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://infraflow-frontend.onrender.com"
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
-// ✅ Routes SECOND
+// ✅ ROUTES
 app.use('/auth', require('./routes/auth'));
-app.use('/api', pipelineRoutes); // ✅ ADD THIS
+app.use('/api', pipelineRoutes);
 
-// ✅ Test route
+// ✅ TEST ROUTE
 app.get('/', (req, res) => {
   res.send('⚡ InfraFlow API is running! 🚀');
 });
 
-// ✅ Database connection
+// ✅ MONGODB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('📦 Successfully connected to MongoDB!'))
-  .catch((err) => console.error('❌ MongoDB connection error:', err));
+  .then(() => console.log('📦 MongoDB Connected'))
+  .catch((err) => console.error('❌ MongoDB Error:', err));
 
-// ✅ Server starts LAST
+// ✅ START SERVER
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
