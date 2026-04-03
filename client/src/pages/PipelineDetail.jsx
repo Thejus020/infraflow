@@ -6,7 +6,6 @@ function PipelineDetail() {
 
   return (
     <div className="flex">
-      
       <Sidebar />
 
       <div className="flex-1 bg-gray-950 text-white p-6">
