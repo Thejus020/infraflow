@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const pipelineRoutes = require('./routes/pipelineRoutes'); // ✅ ADD THIS
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -12,6 +14,7 @@ app.use(express.json());
 
 // ✅ Routes SECOND
 app.use('/auth', require('./routes/auth'));
+app.use('/api', pipelineRoutes); // ✅ ADD THIS
 
 // ✅ Test route
 app.get('/', (req, res) => {
